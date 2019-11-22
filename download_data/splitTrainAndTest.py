@@ -7,7 +7,6 @@
 """
 import random
 import os
-import subprocess
 import sys
 
 

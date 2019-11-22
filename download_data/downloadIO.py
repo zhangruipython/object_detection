@@ -89,7 +89,7 @@ for ind in range(0, len(classes)):
         commands.append(command)
         # 
         with open('%s/%s/%s.txt' % (run_mode, class_name, line_parts[0]), 'a') as f:
-            f.write(','.join([str(ind), str((float(line_parts[5]) + float(line_parts[4])) / 2),
+            f.write(' '.join([str(ind), str((float(line_parts[5]) + float(line_parts[4])) / 2),
                               str((float(line_parts[7]) + float(line_parts[6])) / 2),
                               str(float(line_parts[5]) - float(line_parts[4])),
                               str(float(line_parts[7]) - float(line_parts[6]))]) + '\n')

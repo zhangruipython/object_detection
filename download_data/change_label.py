@@ -21,12 +21,10 @@ def change_label_name(label_name, label_index):
     class_index = label_index
     label_txt_list = glob.glob(label_path + "*.txt")
     for label_txt in label_txt_list:
-        line_change = ""
+        line_label = open(label_txt, "r+")
         for line in open(label_txt):
-            line_change = line.replace(label_name, class_index)
-        fo = open(label_txt, "w")
-        fo.write(line_change)
-        fo.close()
+            line_label.write(line.replace(label_name, class_index))
+        line_label.close()
 
 
 label_dir = {"Microwave_oven": "3",
