@@ -34,8 +34,9 @@ run_mode = args.mode
 
 threads = args.nthreads
 
-classes = ["Blender", "Coffeemaker", "Oven", "Microwave_oven", "Grinder", "Chair", "Refrigerator", "Cake_stand",
-           "Wardrobe", "Printer", "Laptop", "Tablet_computer", "Camera", "Mobile_phone"]
+# classes = ["Blender", "Coffeemaker", "Oven", "Microwave_oven", "Grinder", "Chair", "Refrigerator", "Cake_stand",
+#            "Wardrobe", "Printer", "Laptop", "Tablet_computer", "Camera", "Mobile_phone"]
+classes = ["Table", "Tableware", "Coffee_table", "Wok", "Dishwasher", "Cupboard", "Spoon", "Fork", "Hot_dog"]
 # for class_name in args.classes.split(','):
 #     classes.append(class_name)
 

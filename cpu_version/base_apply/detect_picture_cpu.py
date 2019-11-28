@@ -114,10 +114,10 @@ def draw_detection(detection_param):
 
 
 if __name__ == '__main__':
-    names_path = "../data/coco.names"
-    model_path = "../backup/yolov3.weights"
-    cfg_path = "../cfg/yolov3.cfg"
-    pic_path = "../picture/car01.jpg"
+    names_path = "../data/yike_train.names"
+    model_path = "../backup/yolov3-yike_final.weights"
+    cfg_path = "../cfg/yolov3-yike.cfg"
+    pic_path = "../picture/coffee04.jpg"
     model_param = load_model(classes_file=names_path, model_configuration=cfg_path, model_weights=model_path)
     param = make_detect(model_param[0], model_param[1], pic_path)
     print(param["detection_coo_list"])

@@ -22,14 +22,21 @@ def change_label_name(label_name, label_index):
     label_txt_list = glob.glob(label_path + "*.txt")
     for label_txt in label_txt_list:
         line_label = open(label_txt, "r+")
-        for line in open(label_txt):
-            line_label.write(line.replace(label_name, class_index))
+        class_label = open(label_txt).readlines()
+        for labels in class_label:
+            line_label.write(labels.replace(label_name, class_index))
         line_label.close()
 
 
-label_dir = {"Microwave_oven": "3",
-             "Cake_stand": "7",
-             "Tablet_computer": "11",
-             "Mobile_phone": "13"}
+label_dir = {"Table": "14",
+             "Tableware": "15",
+             "Coffee_table": "16",
+             "Wok": "17",
+             "Dishwasher": "18",
+             "Cupboard": "19",
+             "Spoon": "20",
+             "Fork": "21",
+             "Hot_dog": "22"
+             }
 for label in label_dir:
     change_label_name(label_name=label, label_index=label_dir[label])
