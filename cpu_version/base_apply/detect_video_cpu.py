@@ -8,7 +8,6 @@
 """
 from cpu_version.base_apply import detect_picture_cpu
 import cv2
-
 frame_write_path = "C:/rongze/picture/car/tyre/"  # 视频帧写入文件
 video_path = "C:/rongze/picture/car/big_car03.mp4"  # 视频地址
 frame_index = 0  # 视频帧文件名称
