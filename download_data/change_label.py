@@ -40,3 +40,10 @@ label_dir = {"Table": "14",
              }
 for label in label_dir:
     change_label_name(label_name=label, label_index=label_dir[label])
+
+# label_txt = "./0a0a7fbce0320091.txt"
+# line_label = open(label_txt, "r+")
+# class_label = open(label_txt).readlines()
+# for labels in class_label:
+#     line_label.write(labels.replace(labels[0], "12"))
+# line_label.close()
