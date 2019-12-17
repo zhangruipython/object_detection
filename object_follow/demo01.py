@@ -45,7 +45,7 @@ if __name__ == '__main__':
     trackerType = "MEDIANFLOW"
 
     # Set video to load
-    videoPath = "C:\\rongze\\data\\yike_picture\\lukuang.mp4"
+    videoPath = "C:\\rongze\\data\\yike_picture\\demo07.mp4"
 
     # Create a video capture object to read videos
     cap = cv2.VideoCapture(videoPath)

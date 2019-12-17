@@ -4,7 +4,7 @@
 @Author  : zhangrui
 @FileName: asset_check.py
 @Software: PyCharm
-视频资产盘点
+视频识别跟踪
 """
 from object_follow.object_detect import detection
 from object_follow.object_detect import load_model
