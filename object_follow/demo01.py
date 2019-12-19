@@ -45,7 +45,7 @@ if __name__ == '__main__':
     trackerType = "MEDIANFLOW"
 
     # Set video to load
-    videoPath = "C:\\rongze\\data\\yike_picture\\demo07.mp4"
+    videoPath = "C:\\rongze\\data\\yike_picture\\lukuang.mp4"
 
     # Create a video capture object to read videos
     cap = cv2.VideoCapture(videoPath)
@@ -59,11 +59,22 @@ if __name__ == '__main__':
 
     bboxes = []
     colors = []
+    while True:
+        # draw bounding boxes over objects
+        # selectROI's default behaviour is to draw box starting from the center
+        # when fromCenter is set to false, you can draw box starting from top left corner
+        bbox = cv2.selectROI('MultiTracker', frame)
+        bboxes.append(bbox)
+        colors.append((randint(64, 255), randint(64, 255), randint(64, 255)))
+        print("Press q to quit selecting boxes and start tracking")
+        print("Press any other key to select next object")
+        k = cv2.waitKey(0) & 0xFF
+        if k == 113:  # q is pressed
+            break
 
-    bbox = cv2.selectROI('MultiTracker', frame)
-    print(bbox)
-    bboxes.append(bbox)
-    colors.append((randint(64, 255), randint(64, 255), randint(64, 255)))
+    # bbox = cv2.selectROI('MultiTracker', frame)
+    # bboxes.append(bbox)
+    # colors.append((randint(64, 255), randint(64, 255), randint(64, 255)))
 
     # print('Selected bounding boxes {}'.format(bboxes))
     multiTracker = cv2.MultiTracker_create()

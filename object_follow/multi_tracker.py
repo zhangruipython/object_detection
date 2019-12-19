@@ -69,12 +69,12 @@ if __name__ == '__main__':
     tracker_name = "MEDIANFLOW"
     # picture01_path = "C:\\rongze\\data\\yike_picture\\video_picture\\0.jpg"
     # picture02_path = "C:\\rongze\\data\\yike_picture\\video_picture\\1.jpg"
-    picture01_path = "C:\\rongze\\data\\yike_picture\\1\\1.jpg"
-    picture02_path = "C:\\rongze\\data\\yike_picture\\1\\2.jpg"
+    picture01_path = "C:\\rongze\\data\\yike_picture\\demo06\\0.jpg"
+    picture02_path = "C:\\rongze\\data\\yike_picture\\demo06\\40.jpg"
     img01 = cv2.imread(picture01_path)
     img02 = cv2.imread(picture02_path)
     multi_track = MultiTracker(tracker_type=tracker_name)
     # [("label01", (246, 3, 1204, 593))]
-    track_param = multi_track.start_track(roi_boxes=[], initialize_frame=img01,
+    track_param = multi_track.start_track(roi_boxes=[("label01", (246, 3, 1204, 593))], initialize_frame=img01,
                                           video_frame=img02)
     print(track_param)

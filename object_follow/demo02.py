@@ -43,3 +43,7 @@ for b in count:
 img = cv2.imread("C:\\rongze\\data\\yike_picture\\demo_mix.jpg")
 a = cv2.copyMakeBorder(img, 0, 0, 100, 0, cv2.BORDER_CONSTANT, value=[0, 0, 0])
 cv2.imwrite("C:\\rongze\\data\\yike_picture\\demo_mix.jpg", a)
+multiTracker = cv2.MultiTracker_create()
+# multiTracker.add(multiTracker.add(createTrackerByName(trackerType), frame, bbox))
+print(multiTracker)
+print(type(multiTracker))
