@@ -5,10 +5,12 @@
       <w>flann</w>
       <w>kdtree</w>
       <w>medianflow</w>
+      <w>openimage</w>
       <w>ransac</w>
       <w>reproj</w>
       <w>rongze</w>
       <w>yike</w>
+      <w>yolo</w>
       <w>yolov</w>
     </words>
   </dictionary>

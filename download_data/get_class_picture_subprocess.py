@@ -35,7 +35,7 @@ run_mode = args.mode
 threads = args.nthreads
 
 # classes = ["Blender", "Coffeemaker"]
-csv_path = "/home/hadoop/Documents/app/openimage/class-descriptions-boxable.csv"
+csv_path = "/home/hadoop/Documents/openimage/image/class-descriptions-boxable.csv"
 classes = pd.read_csv(csv_path)["Tortoise"].tolist()
 # for class_name in args.classes.split(','):
 #     classes.append(class_name)
