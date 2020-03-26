@@ -153,7 +153,7 @@ def remove_close_element(boxes):
     sort_boxes = sorted(boxes, key=lambda a: a[1], reverse=False)
     b_list = []
     for i in range(len(sort_boxes) - 1):
-        if abs(sort_boxes[i][1] - sort_boxes[i + 1][1]) < sort_boxes[1]*0.2:
+        if abs(sort_boxes[i][1] - sort_boxes[i + 1][1]) < sort_boxes[1] * 0.2:
             if sort_boxes[i][2] < sort_boxes[i + 1][2]:
                 b_list.append(sort_boxes[i])
             else:
@@ -167,8 +167,7 @@ def detection_to_tracker(detections, confidence, zh_en_dir):
     将初始识别参数转为跟踪坐标参数
     :return:
     """
-    label_names = []
-    label_boxes = []
+    label_param = []
     if detections:
         # 对应的标签名称，取出轴心x坐标，置信度，(top left x, top left y, width, height)
         detection_boxes_list = [(zh_en_dir[detection_param[0].decode()], detection_param[2][0], detection_param[1],
@@ -180,6 +179,5 @@ def detection_to_tracker(detections, confidence, zh_en_dir):
         for detection_param in detection_boxes_list:
             # 置信度过滤
             if detection_param[2] > confidence:
-                label_names.append(detection_param[0])
-                label_boxes.append(detection_param[3])
-    return label_boxes, label_names
+                label_param.append([detection_param[0], detection_param[3]])
+    return label_param

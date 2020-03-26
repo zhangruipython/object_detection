@@ -94,8 +94,37 @@ class ImageEncoder(object):
         return out
 
 
-def create_box_encoder(model_filename, input_name="images",
-                       output_name="features", batch_size=32):
+def create_label_encoder(model_filename, input_name="images", output_name="features", batch_size=32):
+    """
+    为一组同类别box进行外观模型匹配
+    :param model_filename: 模型名称
+    :param input_name: 输入文件类型
+    :param output_name: 输出类型
+    :param batch_size: batch
+    :return: 一组同类别box patch
+    """
+    image_encoder = ImageEncoder(model_filename, input_name, output_name)
+    image_shape = image_encoder.image_shape
+
+    def encoder(image, boxes):
+        label_patch = []
+        for box in boxes:
+            patch = extract_image_patch(image, box, image_shape[:2])
+            if patch is None:
+                print("WARNING: Failed to extract image patch: %s." % str(box))
+                patch = np.random.uniform(0., 255., image_shape).astype(np.uint8)
+                label_patch.append(patch)
+        return label_patch
+    return encoder
+
+
+def create_feature(img_patch, model_filename, input_name="images", output_name="features", batch_size=32):
+    img_patch_array = np.asarray(img_patch)
+    image_encoder = ImageEncoder(model_filename, input_name, output_name)
+    return image_encoder(img_patch_array, batch_size)
+
+
+def create_box_encoder(model_filename, input_name="images", output_name="features", batch_size=32):
     image_encoder = ImageEncoder(model_filename, input_name, output_name)
     image_shape = image_encoder.image_shape
 
@@ -105,12 +134,10 @@ def create_box_encoder(model_filename, input_name="images",
             patch = extract_image_patch(image, box, image_shape[:2])
             if patch is None:
                 print("WARNING: Failed to extract image patch: %s." % str(box))
-                patch = np.random.uniform(
-                    0., 255., image_shape).astype(np.uint8)
+                patch = np.random.uniform(0., 255., image_shape).astype(np.uint8)
             image_patches.append(patch)
         image_patches = np.asarray(image_patches)
         return image_encoder(image_patches, batch_size)
-
     return encoder
 
 
@@ -193,11 +220,11 @@ def parse_args():
         required=True)
     parser.add_argument(
         "--detection_dir", help="Path to custom detections. Defaults to "
-        "standard MOT detections Directory structure should be the default "
-        "MOTChallenge structure: [sequence]/det/det.txt", default=None)
+                                "standard MOT detections Directory structure should be the default "
+                                "MOTChallenge structure: [sequence]/det/det.txt", default=None)
     parser.add_argument(
         "--output_dir", help="Output directory. Will be created if it does not"
-        " exist.", default="detections")
+                             " exist.", default="detections")
     return parser.parse_args()
 
 

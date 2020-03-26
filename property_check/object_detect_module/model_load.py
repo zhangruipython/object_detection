@@ -41,13 +41,13 @@ def load_yike(config_path):
     return load_model(darknet_path, cfg_path, weight_path, meta_path)
 
 
-def load_coco(config_path):
+def load_wheel(config_path):
     cf = configparser.ConfigParser()
     cf.read(config_path, encoding="utf-8")
-    darknet_path = cf.get("coco_model", "darknet_path")
-    cfg_path = cf.get("coco_model", "config_path")
-    weight_path = cf.get("coco_model", "weight_path")
-    meta_path = cf.get("coco_model", "meta_path")
+    darknet_path = cf.get("wheel_model", "darknet_path")
+    cfg_path = cf.get("wheel_model", "config_path")
+    weight_path = cf.get("wheel_model", "weight_path")
+    meta_path = cf.get("wheel_model", "meta_path")
     return load_model(darknet_path, cfg_path, weight_path, meta_path)
 
 

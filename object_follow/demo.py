@@ -43,7 +43,7 @@ if __name__ == '__main__':
     trackerType = "MEDIANFLOW"
 
     # Set video to load
-    videoPath = "C:\\rongze\\data\\yike_picture\\lukuang.mp4"
+    videoPath = "/home/hadoop/Documents/darknet-master-1/darknet-master/test_file/big_car02.mp4"
 
     # Create a video capture object to read videos
     cap = cv2.VideoCapture(videoPath)

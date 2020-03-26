@@ -35,6 +35,7 @@ run_mode = args.mode
 threads = args.nthreads
 
 # classes = ["Blender", "Coffeemaker"]
+# 读取cvs中标签名称
 csv_path = "/home/hadoop/Documents/openimage/image/class-descriptions-boxable.csv"
 classes = pd.read_csv(csv_path)["Tortoise"].tolist()
 # for class_name in args.classes.split(','):
@@ -46,7 +47,8 @@ with open('./class-descriptions-boxable.csv', mode='r') as infile:
 
 subprocess.run(['rm', '-rf', run_mode])
 subprocess.run(['mkdir', run_mode])
-
+subprocess.run(['rm', '-rf', 'labels'])
+subprocess.run(['mkdir', 'labels'])
 pool = thread_pool(threads)
 commands = []
 cnt = 0

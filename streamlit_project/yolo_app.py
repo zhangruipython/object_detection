@@ -8,13 +8,13 @@
 import cv2
 import os
 import urllib
-
 import altair as alt
 import numpy as np
 import pandas as pd
 import streamlit as st
 # from streamlit_project.detect_picture_cpu import make_detect
-from detect_picture_cpu import do_detect,load_model
+from detect_picture_cpu import do_detect, load_model
+
 
 # Streamlit encourages well-structured code, like starting execution in a main() function.
 def main():
@@ -104,7 +104,7 @@ def run_the_app():
     # one another to form a computation DAG (directed acyclic graph). Streamlit
     # recomputes only whatever subset is required to get the right answer!
     # metadata = load_metadata(os.path.join(DATA_URL_ROOT, "labels.csv.gz"))
-    csv_path = "C:/MyProject/object_detection/streamlit_project/labels.csv"
+    csv_path = "D:/MyProject/object_detection/streamlit_project/labels.csv"
     metadata = pd.read_csv(csv_path)
     summary = create_summary(metadata)
 

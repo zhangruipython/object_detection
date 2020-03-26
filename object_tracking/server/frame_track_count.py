@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-@Time    : 2019-12-17 10:51
+@Time    : 2020-01-20 13:36
 @Author  : zhangrui
-@FileName: track_count.py
+@FileName: frame_track_count.py
 @Software: PyCharm
 """
 import cv2
@@ -55,8 +55,6 @@ class TrackCount:
             pass
 
         un_match_list = (set(detect_data_list).difference(set(match_list)))
-        # print(un_match_list)
-        # self.roi_trackers += un_match_list
         self.object_num += [un_match_data[0] for un_match_data in un_match_list]
 
     def read_video(self):
@@ -94,7 +92,6 @@ class TrackCount:
                                                          track_labels=initialize_tracker[1], track_frame=frame)
                 # 根据当前帧跟踪参数，更新跟踪器roi坐标至最新状态
                 tracker_list = []
-
                 for i, param in enumerate(trackers_param):
                     # 如果跟踪状态为true，则更新roi坐标
                     if param[0]:
@@ -113,61 +110,20 @@ class TrackCount:
 
 
 if __name__ == '__main__':
-    # darknet_path = "/home/hadoop/Documents/darknet-master-1/darknet-master/"
-    # configPath = "/home/hadoop/Documents/darknet-master-1/darknet-master/cfg/yolov3-yike02.cfg"
-    # weightPath = "/home/hadoop/Documents/darknet-master-1/darknet-master/final_backup/yolov3-yike02_final.weights"
-    # metaPath = "/home/hadoop/Documents/darknet-master-1/darknet-master/cfg/yike_train02.data"
     darknet_path = "/home/hadoop/Documents/darknet-master-1/darknet-master"
-    config_path = "/home/hadoop/Documents/darknet-master-1/darknet-master/cfg/yolov3-yike_top.cfg"
-    weight_path = "/home/hadoop/Documents/darknet-master-1/darknet-master/final_backup/yolov3-yike_top_final.weights"
-    meta_path = "/home/hadoop/Documents/darknet-master-1/darknet-master/cfg/yike_top.data"
+    config_path = "/home/hadoop/Documents/darknet-master-1/darknet-master/cfg/yolov3-all_train.cfg"
+    weight_path = "/home/hadoop/Documents/darknet-master-1/darknet-master/backup/yolov3-all_train_final.weights"
+    meta_path = "/home/hadoop/Documents/darknet-master-1/darknet-master/cfg/all_train.data"
     zh_en_dir = {
-        "1-1": "货架-货架1",
-        "1-2": "货架-货架2",
-        "1-3": "货架-货架3",
-        "1-4": "货架-货架4",
-        "1-5": "货架-货架5",
-        "2-1": "椅子-高脚凳",
-        "2-2": "椅子",
-        "3": "结账机",
-        "4-1": "桌子-餐桌",
-        "5": "电子屏",
-        "6-1": "器具柜-中岛柜",
-        "6-2": "器具柜-风幕柜",
-        "6-3": "器具柜-中心开放柜",
-        "7-1": "冰箱-卧式冰柜",
-        "7-2": "冰箱-四门冷藏柜",
-        "7-3": "冰箱-单门冷藏柜",
-        "7-4": "冰箱-双门冷藏柜",
-        "7-5": "冰箱-二门冷藏工作台",
-        "8-1": "电子设备-台式电脑",
-        "9": "微波炉",
-        "10-1": "汤锅-台上式单头多功能蒸煮汤锅",
-        "11": "煎饼果子机",
-        "12-1": "打印机-标签打印机",
-        "12-2": "打印机-热敏打印机",
-        "13-1": "电磁炉",
-        "14-1": "扫描枪",
-        "15-1": "POS机",
-        "16-1": "电烤炉",
-        "17-1": "面包展示柜-1",
-        "17-2": "面包展示柜",
-        "18-1": "试吃台",
-        "19-1": "餐具-1",
-        "19-2": "餐具-2",
-        "20-1": "茶桶-不锈钢电热奶茶桶",
-        "21-1": "榨汁机-1",
-        "21-2": "榨汁机-2",
-        "22-1": "冰淇淋机-三头桌上型冰激凌机",
-        "23-1": "开水机-步进式开水机",
-        "23-2": "开水机-蒸汽开水机",
-        "24-1": "咖啡机-1",
-        "25": "钱箱",
-        "26-1": "电子秤"
+        "wheel": "轮胎",
+        "car": "汽车",
+        "bus": "公共汽车",
+        "truck": "卡车",
+        "night": "轮胎"
     }
     model_params = object_detect.load_model(darknet_path, config_path, weight_path, meta_path)
     track_count = TrackCount(
-        input_video_path="/home/hadoop/Documents/darknet-master-1/darknet-master/test_file/cut7.mp4",
+        input_video_path="/home/hadoop/Documents/darknet-master-1/darknet-master/test_file/big_car02.mp4",
         tracker_type="MEDIANFLOW", model_param=model_params, image_path="frame.jpg",
         output_video_path="/home/hadoop/Documents/darknet-master-1/darknet-master/test_file/out.avi",
         zh_en=zh_en_dir)
