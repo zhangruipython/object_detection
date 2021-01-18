@@ -7,7 +7,7 @@ from object_count_app import forms
 from collections import Counter
 import json
 # 模型预加载
-# model_param = model_load.load(config_path="/home/hadoop/RongzerAI/rongerai/property_check/config.conf")
+# model_param = model_load.load(config_path="/home/hadoop/property_check/config.conf")
 
 
 class ObjectCountView(APIView):
